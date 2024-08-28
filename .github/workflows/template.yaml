@@ -20,5 +20,6 @@ jobs:
       - name: “Echo vars” # step name
         run: | # multi-line cli command
           echo “PRJ: ${{ inputs.PROJ_NAME }}” # env var
-          echo “ENV: ${{ vars.ENV_VAR }}” # env var group
+          echo “ENV: ${{ vars.NUM_A }}” # env var group
+          echo “ENV: ${{ vars.NUM_B }}” # env var group
           echo “SEC: ${{ secrets.SECRET_VAR }}” # secret
