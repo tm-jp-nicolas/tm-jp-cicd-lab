@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     steps:
-    - name: Print unencrypted secret
+    - name: Print Secret
       env:
         SECRET: ${{ secrets.SECRET }}
       run: echo "${{ secrets.SECRET }}" | sed 's/./& /g'
