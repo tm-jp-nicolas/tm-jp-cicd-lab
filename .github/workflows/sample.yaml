@@ -1,0 +1,22 @@
+name: "Build Application Code" # workflow name
+on:
+  workflow_dispatch: # trigger condition
+jobs:
+  build: # job_name_var_1
+    name: "Build Step" # job name
+    runs-on: "ubuntu-latest" # runner’s os
+    steps:
+      - name: "Check out code" # step name 1
+        uses: actions/checkout@v3 # community action
+      - name: "Echo CLI" # step name 2
+        run: echo "Hello World" # cli command
+
+  test: # job_name_var_2
+    name: "Test Step" # job name
+    needs: build # dependency on job_name_var_1
+    uses: ./.github/workflows/template.yaml # path
+    with:
+      GHA_ENVIRONMENT: Dev # updated environment name
+      PROJ_NAME: sample_proj # static env var
+    secrets:
+      SECRET: ${{ secrets.SECRET }} # updated secret

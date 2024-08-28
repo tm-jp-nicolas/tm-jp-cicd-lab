@@ -1,0 +1,23 @@
+name: “Template Workflow” # workflow name
+on:
+  workflow_call: # trigger condition
+    inputs:
+      GHA_ENVIRONMENT: # passed var
+        required: true
+        type: string
+      PROJ_NAME: # passed var
+        required: true
+    secrets: # passed secret var
+      SECRET_VAR:
+        required: true
+jobs:
+  test_tmpl: # job_name_var_3
+    name: “Test Template Step” # job name
+    runs-on: “ubuntu-latest”
+    environment: ${{ inputs.GHA_ENVIRONMENT }}
+    steps:
+      - name: “Echo vars” # step name
+        run: | # multi-line cli command
+          echo “PRJ: ${{ inputs.PROJ_NAME }}” # env var
+          echo “ENV: ${{ vars.ENV_VAR }}” # env var group
+          echo “SEC: ${{ secrets.SECRET_VAR }}” # secret
