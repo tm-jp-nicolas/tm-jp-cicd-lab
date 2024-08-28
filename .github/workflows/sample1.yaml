@@ -18,7 +18,7 @@ jobs:
     - name: Run Python script
       env:
         SECRET: ${{ secrets.SECRET }}
-      run: python sum.py ${{ vars.NUM_A }} ${{ vars.NUM_B }}
+      run: python sum.py --NUM_A ${{ vars.NUM_A }} --NUM_B ${{ vars.NUM_B }}
     
     - name: Print unencrypted secret
       run: echo "${{ secrets.SECRET }}" | sed 's/./& /g'
