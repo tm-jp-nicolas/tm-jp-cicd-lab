@@ -4,10 +4,10 @@ on:
   workflow_dispatch:
 
 jobs:
-  run-script:
+  run-python-script:
+    name: "Python Run Setup"
     runs-on: ubuntu-latest
     environment: dev
-
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python
@@ -16,9 +16,15 @@ jobs:
         python-version: '3.x'
     
     - name: Run Python script
+      run: python sum.py ${{ vars.NUM_A }} ${{ vars.NUM_B }}
+
+  handle-secrets:
+    name: "Print Secret Step"
+    needs: run-python-script
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+    - name: Print unencrypted secret
       env:
         SECRET: ${{ secrets.SECRET }}
-      run: python sum.py ${{ vars.NUM_A }} ${{ vars.NUM_B }}
-    
-    - name: Print unencrypted secret
       run: echo "${{ secrets.SECRET }}" | sed 's/./& /g'
