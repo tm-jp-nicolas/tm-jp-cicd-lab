@@ -8,6 +8,7 @@ on:
     secrets: # passed secret var
       SECRET_VAR:
         required: true
+        type: string
 jobs:
   test_tmpl: # job_name_var_3
     name: “Test Template Step” # job name
