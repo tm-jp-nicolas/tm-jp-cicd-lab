@@ -5,9 +5,6 @@ on:
       GHA_ENVIRONMENT: # passed var
         required: true
         type: string
-      PROJ_NAME: # passed var
-        required: true
-        type: string
     secrets: # passed secret var
       SECRET_VAR:
         required: true
@@ -19,7 +16,6 @@ jobs:
     steps:
       - name: “Echo vars” # step name
         run: | # multi-line cli command
-          echo “PRJ: ${{ inputs.PROJ_NAME }}” # env var
           echo “ENV: ${{ vars.NUM_A }}” # env var group
           echo “ENV: ${{ vars.NUM_B }}” # env var group
           echo “SEC: ${{ secrets.SECRET_VAR }}” # secret

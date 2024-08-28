@@ -17,6 +17,5 @@ jobs:
     uses: ./.github/workflows/template.yaml # path
     with:
       GHA_ENVIRONMENT: Dev # updated environment name
-      PROJ_NAME: sample_proj # static env var
     secrets:
       SECRET: ${{ secrets.SECRET }} # updated secret
