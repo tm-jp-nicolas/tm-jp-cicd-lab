@@ -7,6 +7,7 @@ on:
         type: string
       PROJ_NAME: # passed var
         required: true
+        type: string
     secrets: # passed secret var
       SECRET_VAR:
         required: true
