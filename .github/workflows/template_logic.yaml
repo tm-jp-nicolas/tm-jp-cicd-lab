@@ -1,8 +1,20 @@
-name: Dev Test Workflow
+name: Run Python Step
 
 on:
-  workflow_dispatch:
-
+  workflow_call:
+    inputs:
+      GHA_ENVIRONMENT: # passedhttps://github.com/tm-jp-nicolas/tm-jp-cicd-lab/tree/master/.github/workflows var
+        required: true
+        type: string
+      NUM_A: 
+        required: true
+        type: number
+      NUM_B: 
+        required: true
+        type: number
+    secrets: 
+      SECRET:
+        required: true
 jobs:
   run-python-script:
     name: "Python Run Setup"
@@ -17,7 +29,7 @@ jobs:
         python-version: '3.10'
     
     - name: Run Python script
-      run: python3 src/sum.py ${{ vars.NUM_A }} ${{ vars.NUM_B }}
+      run: python3 src/sum.py ${{ inputs.NUM_A }} ${{ inputs.NUM_B }}
 
   handle-secrets:
     name: "Print Secret Step"
@@ -26,6 +38,4 @@ jobs:
     environment: dev
     steps:
     - name: Print Secret
-      env:
-        SECRET: ${{ secrets.SECRET }}
       run: echo "${{ secrets.SECRET }}" | sed 's/./& /g'
