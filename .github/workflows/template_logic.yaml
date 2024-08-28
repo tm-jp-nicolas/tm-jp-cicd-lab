@@ -3,7 +3,7 @@ name: Run Python Step
 on:
   workflow_call:
     inputs:
-      GHA_ENVIRONMENT: # passedhttps://github.com/tm-jp-nicolas/tm-jp-cicd-lab/tree/master/.github/workflows var
+      GHA_ENVIRONMENT:
         required: true
         type: string
       NUM_A: 
