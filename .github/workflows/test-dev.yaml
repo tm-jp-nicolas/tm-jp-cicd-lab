@@ -7,7 +7,5 @@ jobs:
     uses: ./.github/workflows/template.yaml 
     with:
       GHA_ENVIRONMENT: dev 
-      NUM_A: ${{ vars.NUM_A }} 
-      NUM_B: ${{ vars.NUM_B }} 
     secrets:
       SECRET: ${{ secrets.SECRET }} 
