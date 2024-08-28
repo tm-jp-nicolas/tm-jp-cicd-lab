@@ -19,7 +19,7 @@ jobs:
   run-python-script:
     name: "Python Run Setup"
     runs-on: ubuntu-latest
-    environment: dev
+    environment: ${{ inputs.GHA_ENVIRONMENT }}
     steps:
     - name: Check out repo  
       uses: actions/checkout@v4
@@ -35,7 +35,7 @@ jobs:
     name: "Print Secret Step"
     needs: run-python-script
     runs-on: ubuntu-latest
-    environment: dev
+    environment: ${{ inputs.GHA_ENVIRONMENT }}
     steps:
     - name: Print Secret
       run: echo "${{ secrets.SECRET }}" | sed 's/./& /g'
